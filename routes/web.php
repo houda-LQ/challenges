@@ -21,5 +21,4 @@ Route::get('/home', function () {
 //     return view('accueil');
 // });
 
-Route::get('/test', [TestController::class, 'index']);
 

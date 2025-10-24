@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -12,15 +13,15 @@ class PostController extends Controller
     }
     
 
-    public function store(){
+    public function store(Request $request){
         $post = Post::create(
             [
-                "tittle"=>"tittle1",
-                "content"=>"content1",
-                "author"=>"houda"
+                "tittle"=>$request->tittle,
+                "content"=>$request->content,
+                "author"=>$request->author
             ]
         );
-        return $posts;
+        return $post;
     }
     public function show($id){
         $post = Post::find($id);
@@ -29,10 +30,23 @@ class PostController extends Controller
         }
         return "introuvable";
     }
-     public function update($id){
+     public function update(Request $request  ,$id){
         $post = Post::find($id);
        if ($post) {
-        $post->tittle="tittle2";
+        $post->tittle= $request->tittle;
+        $post->content= $request->content;
+        $post->author= $request->author;
+    
+            return $post;
+        }
+        return "introuvable";
+     }
+     public function updateStatus(Request $request  ,$id){
+        $post = Post::find($id);
+       if ($post) {
+        $post->status= $request->status;
+      $post->save();
+    
             return $post;
         }
         return "introuvable";
