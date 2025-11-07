@@ -1,7 +1,12 @@
 <?php
 
+<<<<<<< HEAD
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
+=======
+use App\Http\Controllers\FormController;
+use GuzzleHttp\Psr7\Request;
+>>>>>>> 9209f5f0e4b6c8bd491b14f6d5c1bef6c92f317c
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+<<<<<<< HEAD
 Route::get('/', function () {
     return view('welcome');
 });
@@ -42,3 +48,9 @@ Route::middleware('auth')->group(function () {
 
 
 require __DIR__.'/auth.php';
+=======
+Route::get('/register', [FormController::class , "show"]);
+Route::post('/register/submit', [FormController::class , "handleForm"])->name("register.submit");
+
+
+>>>>>>> 9209f5f0e4b6c8bd491b14f6d5c1bef6c92f317c
